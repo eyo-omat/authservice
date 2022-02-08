@@ -27,19 +27,20 @@ public class AppUser implements UserDetails {
     private Long id;
 
     @NonNull
-    private String name;
+    private String firstName;
     @NonNull
-    private String username;
-    @NonNull
-    private String password;
+    private String lastName;
     @NonNull
     private String email;
     @NonNull
+    private String password;
+    @NonNull
+    @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
-    @NonNull
-    private Boolean locked;
-    @NonNull
-    private Boolean enabled;
+
+    private Boolean locked = false;
+
+    private Boolean enabled = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,7 +55,15 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
+    }
+
+    public String getFirstName() {
+        return lastName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
